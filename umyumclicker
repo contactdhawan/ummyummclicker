@@ -10,6 +10,7 @@
       font-family: 'Comic Sans MS', cursive, sans-serif;
       text-align: center;
       padding: 50px;
+      overflow: hidden;
     }
 
     h1 {
@@ -52,6 +53,20 @@
       border-radius: 10px;
       cursor: pointer;
     }
+
+    .bunny {
+      position: absolute;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/616/616408.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      animation: hop 1s infinite alternate;
+    }
+
+    @keyframes hop {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
   </style>
 </head>
 <body>
@@ -90,6 +105,44 @@
         alert('Not enough umyums!');
       }
     }
+
+    function spawnBunny() {
+      const bunny = document.createElement('div');
+      bunny.classList.add('bunny');
+
+      const size = Math.floor(Math.random() * 80) + 40; // 40 to 120px
+      const multiplier = Math.floor(size / 20); // 2 to 6 (approx)
+
+      bunny.style.width = `${size}px`;
+      bunny.style.height = `${size}px`;
+
+      bunny.style.left = `${Math.random() * (window.innerWidth - size)}px`;
+      bunny.style.top = `${Math.random() * (window.innerHeight - size)}px`;
+
+      document.body.appendChild(bunny);
+
+      const removeTimeout = setTimeout(() => {
+        bunny.remove();
+      }, 30000); // 30 seconds
+
+      bunny.addEventListener('click', () => {
+        umyums *= multiplier;
+        updateScore();
+        clearTimeout(removeTimeout);
+        bunny.remove();
+      });
+
+      // Schedule the next bunny
+      scheduleNextBunny();
+    }
+
+    function scheduleNextBunny() {
+      const delay = Math.random() * (300000 - 180000) + 180000; // between 3 and 5 minutes in ms
+      setTimeout(spawnBunny, delay);
+    }
+
+    // Start the first bunny
+    scheduleNextBunny();
   </script>
 </body>
 </html>
