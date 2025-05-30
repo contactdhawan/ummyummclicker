@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Um Yum Clicker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="top-bar">
+    <div id="news">Welcome to Um Yum Clicker!</div>
+    <div id="progress-bar-container"><div id="progress-bar-fill"></div></div>
+  </div>
+
+  <div id="game-container">
+    <div id="left-panel">
+      <img id="bunny" src="img/bunny.png" alt="Bunny" />
+      <div id="lollipops">Lollipops: 0</div>
+      <div id="lps">Lollipops per second: 0</div>
+      <input type="text" id="playerName" placeholder="Enter your bunny name" />
+    </div>
+
+    <div id="middle-panel">
+      <h3>Buildings</h3>
+      <div id="buildings-list"></div>
+      <h3>Click Buildings</h3>
+      <div id="click-buildings-list"></div>
+    </div>
+
+    <div id="right-panel">
+      <div id="tab-buttons">
+        <button data-tab="stats">Stats</button>
+        <button data-tab="upgrades">Upgrades</button>
+        <button data-tab="achievements">Achievements</button>
+        <button data-tab="options">Options</button>
+        <button data-tab="prestige">Bunny Resurrection</button>
+        <button data-tab="bunnypedia">Bunnypedia</button>
+      </div>
+
+      <div id="tab-content">
+        <div id="stats-tab" class="tab"></div>
+        <div id="upgrades-tab" class="tab"></div>
+        <div id="achievements-tab" class="tab"></div>
+        <div id="options-tab" class="tab">
+          <button onclick="manualSave()">Manual Save</button>
+          <button onclick="exportSave()">Export Save</button>
+          <button onclick="importSave()">Import Save</button>
+          <button onclick="toggleMute()">Toggle Sound</button>
+        </div>
+        <div id="prestige-tab" class="tab"></div>
+        <div id="bunnypedia-tab" class="tab"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gift-section">
+    <h3>🎁 Gift System</h3>
+    <input type="number" id="giftAmount" placeholder="Enter amount to gift" />
+    <button onclick="createGift()">Create Gift Code</button>
+    <textarea id="giftCode" readonly></textarea>
+    <textarea id="giftInput" placeholder="Paste gift code here"></textarea>
+    <button onclick="acceptGift()">Accept Gift</button>
+    <p id="giftMessage"></p>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
