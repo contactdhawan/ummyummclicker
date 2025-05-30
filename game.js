@@ -466,7 +466,7 @@ function checkPassiveCoreGrowth() {
 // ========== FLOATING BUNNY ==========
 function animateClickBunnyDrop() {
   const bunny = document.createElement("img");
-  bunny.src = "img/bunny.png";
+  bunny.src = "bunny.png";
   bunny.style.position = "absolute";
   bunny.style.width = "32px";
   bunny.style.left = Math.random() * 150 + 50 + "px";
